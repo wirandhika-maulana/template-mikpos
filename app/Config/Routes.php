@@ -10,11 +10,16 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
-$routes->setDefaultNamespace('App\Controllers\base');
-$routes->setDefaultController('DashboardController');
+$routes->setDefaultNamespace('App\Controllers');
+$routes->setDefaultController('base\DashboardController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+
+// Fix the base group routing to use proper namespace
+$routes->group('base', function($routes) {
+    $routes->add('dashboard', 'base\DashboardController::index');
+});
 
 if(isset($_SERVER['HTTP_HOST'])){
 
@@ -49,8 +54,8 @@ if(isset($_SERVER['HTTP_HOST'])){
     $routes->add('/callback/(:any)', 'PaymentController::callback'); 
 
 	// Login
-	$routes->add('/', 'DashboardController::index'); 
-	$routes->post('do_auth', 'DashboardController::do_auth');
+	$routes->add('/', 'base\DashboardController::index'); 
+	$routes->post('do_auth', 'base\DashboardController::do_auth');
 	$routes->get('router/do_unauth', 'DashboardController::do_unauth_owner');
 
 	// Router
@@ -112,13 +117,15 @@ if(isset($_SERVER['HTTP_HOST'])){
     $routes->post('u/do_update_tripaydata', 'DashboardController::do_update_tripaydata');
     $routes->post('u/do_update_pm', 'DashboardController::do_update_pm');
 
-    //tes route
-    $routes->add('/', 'DashboardController::index');
+    //tes routes
     $routes->add('u/tes1', 'DashboardController::tes1');
-    $routes->post('/do_auth', 'DashboardController::do_auth');
+    $routes->post('/do_auth', 'base\DashboardController::do_auth');
     $routes->add('/dashboard/debug', 'DashboardController::debug');
 
-
+    $routes->group('base', function($routes) {
+        // Tambahkan namespace lengkap atau gunakan namespace relative
+        $routes->add('dashboard', 'base\DashboardController::index');
+    });
 	// //404
 	// $routes->add('(:any)', 'DashboardController::e404');
 
@@ -130,6 +137,7 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
+
 /**
  * --------------------------------------------------------------------
  * Route Definitions
@@ -138,7 +146,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// $routes->get('/', 'Home::index');
+ $routes->get('/', 'Home::index');
 // $routes->add('theme', 'Anu::demo');
 // $routes->add('(:any)', 'Anu::index');
 

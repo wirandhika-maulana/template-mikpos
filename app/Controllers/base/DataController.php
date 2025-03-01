@@ -6,6 +6,15 @@ use App\Libraries\RouterosAPI;
 
 class DataController extends Controller
 {
+    protected $session;
+    protected $DashboardModel;
+    protected $ROSModel;
+    protected $request;
+    protected $uri;
+    protected $ros;
+    protected $key;
+    protected $db;
+
     public function __construct() {
         $this->DashboardModel = new DashboardModel();
         $this->ros = new RouterosAPI();
@@ -19,7 +28,7 @@ class DataController extends Controller
         $rosauth = $this->DashboardModel->get_router_by_router_id();
         $this->ros->connect($rosauth[0]->router_host, $rosauth[0]->router_user, $this->key->de($rosauth[0]->router_pass));
         $getprofile = $this->ros->comm("/system/scheduler/print", array("?name" => "$name"));
-        $this->ros->disconnect;
+        $this->ros->disconnect();
         return json_encode($getprofile);
     }
 
@@ -28,7 +37,7 @@ class DataController extends Controller
         $rosauth = $this->DashboardModel->get_router_by_router_id();
         $this->ros->connect($rosauth[0]->router_host, $rosauth[0]->router_user, $this->key->de($rosauth[0]->router_pass));
         $getprofile = $this->ros->comm("/ppp/active/print", array("?name" => "$name"));
-        $this->ros->disconnect;
+        $this->ros->disconnect();
         return json_encode($getprofile);
     }
 

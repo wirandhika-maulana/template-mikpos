@@ -613,3 +613,63 @@ CRITICAL - 2025-03-01 20:18:09 --> syntax error, unexpected token "public", expe
 #6 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
 #7 C:\xampp\htdocs\mikpos\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
 #8 {main}
+CRITICAL - 2025-03-01 21:55:44 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:55:49 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:56:18 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:56:18 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:56:18 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:56:28 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:57:02 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:57:03 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:57:03 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-03-01 21:57:04 --> Cannot use object of type CodeIgniter\Router\RouteCollection as array
+#0 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(772): require()
+#1 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(358): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#2 C:\xampp\htdocs\mikpos\system\CodeIgniter.php(306): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\mikpos\public\index.php(45): CodeIgniter\CodeIgniter->run()
+#4 {main}

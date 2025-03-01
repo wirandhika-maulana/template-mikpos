@@ -18,6 +18,23 @@ define("ref", false);
 
 class PaymentController extends Controller
 {
+    protected $session;
+    protected $ROSPaymentModel;
+    protected $request;
+    protected $uri;
+    protected $ros;
+    protected $key;
+    protected $db;
+    protected $user;
+    protected $userid;
+    protected $routerid;
+    protected $ref;
+    protected $endpoint;
+    protected $amount;
+    protected $currency;
+    protected $currency_code;
+    protected $currency_name;
+
     public function __construct() {
 
         $this->session = session();
@@ -103,7 +120,7 @@ class PaymentController extends Controller
             $gr = $this->ROSPaymentModel->gr($routerid,$userid);
             $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
             $get_hotspot_user = $this->ros->comm("/ip/hotspot/user/print", array("?name" => "$membername"));
-            $this->ros->disconnect;
+            $this->ros->disconnect();
             
             $profile = $get_hotspot_user[0]['profile'];
             $get_profile = $this->ROSPaymentModel->get_hotspot_profile_by_name($profile,$routerid,$userid);
@@ -174,7 +191,7 @@ class PaymentController extends Controller
             $gr = $this->ROSPaymentModel->gr($routerid,$userid);
             $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
             $data['hotspot_profile'] = $this->ros->comm("/ip/hotspot/user/profile/print", array());
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             return view('payment/voucherpayment', $data);
         } else {
@@ -193,7 +210,7 @@ class PaymentController extends Controller
             $gr = $this->ROSPaymentModel->gr($routerid,$userid);
             $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
             $data['hotspot_profile'] = $this->ros->comm("/ip/hotspot/user/profile/print", array());
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             return view('template/tbeli', $data);
         } else {
@@ -212,7 +229,7 @@ class PaymentController extends Controller
             $gr = $this->ROSPaymentModel->gr($routerid,$userid);
             $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
             $data['hotspot_profile'] = $this->ros->comm("/ip/hotspot/user/profile/print", array());
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             return view('template/tperpanjang', $data);
         } else {
@@ -232,7 +249,7 @@ class PaymentController extends Controller
             $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
             $get_ppp_secret = $this->ros->comm("/ppp/secret/print", array("?name" => "$membername"));
             $get_ppp_scheduler = $this->ros->comm("/system/scheduler/print", array("?name" => "$membername"));
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             if (!empty($get_ppp_secret) && $membername == explode(",",$get_ppp_scheduler[0]['on-event'])[7]) {
                 setlocale(LC_ALL, 'id-ID', 'id_ID');
@@ -292,7 +309,7 @@ class PaymentController extends Controller
             $profile = $get_hotspot_user[0]['profile'];
             $get_profile = $this->ros->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
             $get_profile_sch = $this->ros->comm("/system/scheduler/print", array("?name" => "$profile"));
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             if (!empty($get_hotspot_user) && !empty($get_profile) && !empty($get_profile_sch)) {
                 setlocale(LC_ALL, 'id-ID', 'id_ID');
@@ -362,7 +379,7 @@ class PaymentController extends Controller
             $profile = $get_hotspot_user[0]['profile'];
             $get_profile = $this->ros->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
             $get_profile_sch = $this->ros->comm("/system/scheduler/print", array("?name" => "$profile"));
-            $this->ros->disconnect;
+            $this->ros->disconnect();
 
             if (!empty($get_hotspot_user) && !empty($get_profile) && !empty($get_profile_sch)) {
                 setlocale(LC_ALL, 'id-ID', 'id_ID');
@@ -443,7 +460,7 @@ class PaymentController extends Controller
         $this->ros->connect($gr[0]->router_host, $gr[0]->router_user, $this->key->de($gr[0]->router_pass));
         $get_ppp_secret = $this->ros->comm("/ppp/secret/print", array("?name" => "$ppp_secret_name"));
         $get_ppp_scheduler = $this->ros->comm("/system/scheduler/print", array("?name" => "$ppp_secret_name"));
-        $this->ros->disconnect;
+        $this->ros->disconnect();
 
         $price = explode(",",$get_ppp_scheduler[0]['on-event'])[8];
         $validity = explode(",",$get_ppp_scheduler[0]['on-event'])[4];
@@ -544,7 +561,7 @@ class PaymentController extends Controller
         $get_hotspot_user = $this->ros->comm("/ip/hotspot/user/print", array("?name" => "$kodevoucher"));
         $get_profile = $this->ros->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
         $get_profile_sch = $this->ros->comm("/system/scheduler/print", array("?name" => "$profile"));
-        $this->ros->disconnect;
+        $this->ros->disconnect();
 
         if (!empty(explode(",", $get_profile[0]['on-login'])[4])) {
             $price = explode(",", $get_profile[0]['on-login'])[4];
@@ -663,7 +680,7 @@ class PaymentController extends Controller
         $profile = $get_hotspot_user[0]['profile'];
         $get_profile = $this->ros->comm("/ip/hotspot/user/profile/print", array("?name" => "$profile"));
         $get_profile_sch = $this->ros->comm("/system/scheduler/print", array("?name" => "$profile"));
-        $this->ros->disconnect;
+        $this->ros->disconnect();
 
         if (!empty(explode(",", $get_profile[0]['on-login'])[4])) {
             $price = explode(",", $get_profile[0]['on-login'])[4];
@@ -1001,7 +1018,7 @@ class PaymentController extends Controller
                         exit('ROS Query Failed');
                     } else {
                         $get_ppp_active = $this->ros->comm("/ppp/active/print", array("?name" => "$name"));
-                        $this->ros->disconnect;
+                        $this->ros->disconnect();
                         $activeid = $get_ppp_active[0]['.id'];
                         $removeactive = $this->ROSPaymentModel->remove_ppp_active($activeid,$routerid,$userid);
                         // $removeactive = $this->ros->comm("/ppp/active/remove", array(
@@ -1044,7 +1061,7 @@ class PaymentController extends Controller
 
                     // $get_user = $this->ROSPaymentModel->get_hotspot_user($name,$routerid,$userid);
                     $get_user = $this->ros->comm("/ip/hotspot/user/print", array("?name" => "$name"));
-                    $this->ros->disconnect;
+                    $this->ros->disconnect();
 
                     $uid = $get_user[0]['.id'];
                     $ucomment = $get_user[0]['comment'];

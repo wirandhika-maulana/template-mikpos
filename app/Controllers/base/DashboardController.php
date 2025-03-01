@@ -60,19 +60,9 @@ class DashboardController extends Controller{
     }
 
     public function index()
-{
-    // Periksa apakah user sudah login
-    if (!$this->session->get('ownerlogged')) {
-        // Jika belum login, tampilkan halaman login
-        return view('login_view');
-    } else {
-        // Jika sudah login, tampilkan dashboard
-        return redirect()->to('u/dashboard');
-        // Atau tampilkan view dashboard langsung:
-        // $data['title'] = 'Dashboard';
-        // return view('dashboard_view', $data);
+    {
+        return view('dashboard/index');
     }
-}
 
     public function router()
     {
@@ -300,7 +290,7 @@ class DashboardController extends Controller{
             $this->session->set($sess_data);
 
             return redirect()->to(base_url('/u/dashboard'));
-
+        
         }
         else
         {
@@ -323,17 +313,7 @@ class DashboardController extends Controller{
 
     public function dashboard()
     {
-        $data['dashboard'] = $this->ROSModel->dashboard();
-        $data['total_profit_bulanan'] = $this->DashboardModel->get_total_profit_month();
-        $data['total_profit_harian'] = $this->DashboardModel->get_total_profit_day();
-        $data['total_profit'] = $this->DashboardModel->get_total_profit();
-        $data['last_month'] = $this->DashboardModel->profit_last_month();
-        $data['last_day'] = $this->DashboardModel->profit_last_day();
-        
-        $data['router'] = $this->DashboardModel->get_router_by_router_id();
-        $data['title'] = 'Dashboard';
-        $data['view'] = 'base/dashboard/dashboard';
-        return view('base/dashboard/layout', $data);
+        return view('dashboard/dashboard');
     }
 
     public function extendexpire()

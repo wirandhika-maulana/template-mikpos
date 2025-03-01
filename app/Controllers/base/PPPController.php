@@ -8,6 +8,15 @@ use App\Libraries\RouterosAPI;
 
 class PPPController extends Controller
 {
+    
+    protected $session;
+    protected $DashboardModel;
+    protected $ROSModel;
+    protected $request;
+    protected $uri;
+    protected $ros;
+    protected $key;
+    protected $db;
     public function __construct() {
         $this->DashboardModel = new DashboardModel();
         $this->ros = new RouterosAPI();
@@ -39,7 +48,7 @@ class PPPController extends Controller
         $data['secrets'] = $this->ros->comm("/ppp/secret/print", array());
         // $data['sch'] = $this->ros->comm("/system/scheduler/print", array());
 
-        $this->ros->disconnect;
+        $this->ros->disconnect();
 
         date_default_timezone_set('Asia/Jakarta');
         $data['today'] = strtolower(date('M/d/Y'));
